@@ -1,6 +1,6 @@
 {
   "name": "dl-eval",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A dice equation evaluator. Evaluate expressions like '1d20 + 5'.",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
