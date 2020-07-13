@@ -5,6 +5,13 @@ function adv(args: any, math: any, scope: any) {
   return math.max(a, b)
 }
 
+function dis(args: any, math: any, scope: any) {
+  const a = args[0].compile().evaluate(scope)
+  const b = args[0].compile().evaluate(scope)
+  return math.min(a, b)
+}
+
+dis.rawArgs = true
 adv.rawArgs = true
 
 export class DiceEvaluator {
@@ -18,6 +25,7 @@ export class DiceEvaluator {
       {
         ...scope,
         adv,
+        dis,
         roll: this.roll,
       },
       {},
@@ -32,7 +40,7 @@ export class DiceEvaluator {
     const minEq = exp.replace(/(\d+)d(\d+)/g, '$1')
     const min = this.math.evaluate(minEq, scope)
 
-    const maxEq = exp.replace(/(\d+)d(\d+)/g, '\($1*$2\)')
+    const maxEq = exp.replace(/(\d+)d(\d+)/g, '($1*$2)')
     const max = this.math.evaluate(maxEq, scope)
 
     const dice: number[] = this.dice.slice()
